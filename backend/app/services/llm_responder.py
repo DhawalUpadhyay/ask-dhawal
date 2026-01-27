@@ -26,7 +26,7 @@ def generate_llm_reply(message: str, history: list[str] | None = None) -> str:
 
     try:
         response = client.chat.completions.create(
-            model="gpt-5-mini",
+            model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
             messages=messages,
             temperature=0.2,     # factual, not creative
             max_tokens=300,
