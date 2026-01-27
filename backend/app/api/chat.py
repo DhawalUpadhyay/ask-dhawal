@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.schemas.chat import ChatRequest, ChatResponse
-from app.services.logger import log_interaction
-from app.services.responder import generate_reply
+from app.services.logger import log_interaction, get_chat_history
+from app.services.llm_responder import generate_llm_reply as generate_reply
 import uuid
 
 router = APIRouter()
@@ -9,7 +9,8 @@ router = APIRouter()
 @router.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     session_id = req.session_id or str(uuid.uuid4())
-    reply = generate_reply(req.message)
+    history = get_chat_history(session_id)
+    reply = generate_reply(req.message, history)
 
     log_interaction(
         session_id=session_id,
