@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi import Request
 
 print("FASTAPI BACKEND LOADED")
-app = FastAPI(title="AskDhawal API")
+app = FastAPI(title="AskDhawal API", root_path="/api")
 
 @app.get("/health")
 def health():
