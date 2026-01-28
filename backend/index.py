@@ -1,3 +1,4 @@
+print("🔥 FASTAPI BACKEND LOADED 🔥")
 import sys
 import os
 
