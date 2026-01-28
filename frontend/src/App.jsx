@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
 function App() {
+  // const endpoint = "https://ask-dhawal.vercel.app/api/chat";
+  const endpoint = "http://localhost:8000/chat";
   const [messages, setMessages] = useState([
     {
       role: "bot",
@@ -31,7 +33,7 @@ function App() {
     setInput("");
     setLoading(true);
 
-    const res = await fetch("/api/chat", {
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
