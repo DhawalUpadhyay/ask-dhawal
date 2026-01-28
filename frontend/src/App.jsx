@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
 function App() {
-  // const endpoint = "https://ask-dhawal.vercel.app/api/chat";
-  const endpoint = "http://localhost:8000/chat";
+  const endpoint = "/api/chat";
+  // const endpoint = "http://localhost:8000/chat";
   const [messages, setMessages] = useState([
     {
       role: "bot",
