@@ -1,8 +1,7 @@
-from backend.app.db.database import SessionLocal
+from sqlalchemy.orm import Session
 from backend.app.db.models import Interaction
 
-def log_interaction(session_id: str, question: str, answer: str):
-    db = SessionLocal()
+def log_interaction(session_id: str, question: str, answer: str, db: Session):
     interaction = Interaction(
         session_id=session_id,
         question=question,
@@ -10,14 +9,11 @@ def log_interaction(session_id: str, question: str, answer: str):
     )
     db.add(interaction)
     db.commit()
-    db.close()
 
-def get_chat_history(session_id: str, limit: int = 6):
+def get_chat_history(session_id: str, db: Session, limit: int = 6):
     """
     Returns last N interactions as OpenAI-compatible messages
     """
-    db = SessionLocal()
-
     rows = (
         db.query(Interaction)
         .filter(Interaction.session_id == session_id)
@@ -25,9 +21,6 @@ def get_chat_history(session_id: str, limit: int = 6):
         .limit(limit)
         .all()
     )
-
-    db.close()
-
     history = []
 
     # reverse so oldest comes first
