@@ -1,12 +1,12 @@
 from fastapi import APIRouter
-from app.schemas.chat import ChatRequest, ChatResponse
-from app.services.logger import log_interaction, get_chat_history
-from app.services.llm_responder import generate_llm_reply as generate_reply
-from app.services.greeting import is_greeting, greeting_response
+from backend.app.schemas.chat import ChatRequest, ChatResponse
+from backend.app.services.logger import log_interaction, get_chat_history
+from backend.app.services.llm_responder import generate_llm_reply as generate_reply
+from backend.app.services.greeting import is_greeting, greeting_response
 
 import uuid
 
-router = APIRouter()
+router = APIRouter(prefix="/api")
 
 @router.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
@@ -36,3 +36,14 @@ def chat(req: ChatRequest):
         reply=reply,
         session_id=session_id
     )
+
+@router.get("/health")
+def health():
+    return {"status": "ok"}
+
+@router.get("/__routes")
+def show_routes():
+    return [
+        {"path": r.path, "methods": list(r.methods)}
+        for r in router.routes
+    ]
