@@ -5,7 +5,7 @@ from backend.app.services.greeting import is_greeting, greeting_response
 from backend.app.state import conversation_store
 
 import uuid
-
+MAX_HISTORY = 12
 router = APIRouter(prefix="/api")
 
 @router.post("/chat", response_model=ChatResponse)
@@ -25,6 +25,8 @@ def chat(req: ChatRequest):
                 "role": "assistant",
                 "content": reply
             })
+            conversation_store[session_id] = conversation_store[session_id][-MAX_HISTORY:]
+
             print("Logged greeting interaction.")
             return ChatResponse(
                 reply=reply,
@@ -39,7 +41,7 @@ def chat(req: ChatRequest):
             "role": "assistant",
             "content": reply
         })
-
+        conversation_store[session_id] = conversation_store[session_id][-MAX_HISTORY:]
         return ChatResponse(
             reply=reply,
             session_id=session_id
