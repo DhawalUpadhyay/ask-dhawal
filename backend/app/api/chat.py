@@ -51,10 +51,3 @@ def chat(req: ChatRequest):
 @router.get("/health")
 def health():
     return {"status": "ok"}
-
-@router.get("/__routes")
-def show_routes():
-    return [
-        {"path": r.path, "methods": list(r.methods)}
-        for r in router.routes
-    ]
