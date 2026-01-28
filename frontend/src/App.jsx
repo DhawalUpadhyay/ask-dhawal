@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { API_BASE_URL } from "./config/api";
 
 function App() {
-  const endpoint = `${API_BASE_URL}/chat`;
+  const endpoint = `${API_BASE_URL}/api/chat`;
   const [messages, setMessages] = useState([
     {
       role: "bot",
