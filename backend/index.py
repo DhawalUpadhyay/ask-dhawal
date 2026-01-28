@@ -1,32 +1,33 @@
-print("🔥 FASTAPI BACKEND LOADED 🔥")
-import sys
-import os
 
-sys.path.append(os.path.dirname(__file__))
+# print("🔥 FASTAPI BACKEND LOADED 🔥")
+# import sys
+# import os
 
-from fastapi import FastAPI
-from app.api.chat import router as chat_router
-from fastapi.middleware.cors import CORSMiddleware
+# sys.path.append(os.path.dirname(__file__))
 
-app = FastAPI(title="AskDhawal API")
+# from fastapi import FastAPI
+# from app.api.chat import router as chat_router
+# from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # safe for public resume
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app = FastAPI(title="AskDhawal API")
 
-app.include_router(chat_router)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  # safe for public resume
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+# app.include_router(chat_router)
 
-@app.get("/__routes")
-def show_routes():
-    return [
-        {"path": r.path, "methods": list(r.methods)}
-        for r in app.routes
-    ]
+# @app.get("/health")
+# def health():
+#     return {"status": "ok"}
+
+# @app.get("/__routes")
+# def show_routes():
+#     return [
+#         {"path": r.path, "methods": list(r.methods)}
+#         for r in app.routes
+#     ]
