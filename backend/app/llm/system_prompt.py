@@ -1,4 +1,4 @@
-from app.data.resume import RESUME_DATA
+from backend.app.data.resume import RESUME_DATA
 
 def build_system_prompt():
     return f"""

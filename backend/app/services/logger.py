@@ -1,5 +1,5 @@
-from app.db.database import SessionLocal
-from app.db.models import Interaction
+from backend.app.db.database import SessionLocal
+from backend.app.db.models import Interaction
 
 def log_interaction(session_id: str, question: str, answer: str):
     db = SessionLocal()

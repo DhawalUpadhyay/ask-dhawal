@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from app.schemas.chat import ChatRequest, ChatResponse
-from app.services.logger import log_interaction, get_chat_history
-from app.services.llm_responder import generate_llm_reply as generate_reply
-from app.services.greeting import is_greeting, greeting_response
+from backend.app.schemas.chat import ChatRequest, ChatResponse
+from backend.app.services.logger import log_interaction, get_chat_history
+from backend.app.services.llm_responder import generate_llm_reply as generate_reply
+from backend.app.services.greeting import is_greeting, greeting_response
 
 import uuid
 
