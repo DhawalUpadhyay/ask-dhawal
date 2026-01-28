@@ -17,3 +17,10 @@ app.include_router(chat_router)
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.get("/__routes")
+def show_routes():
+    return [
+        {"path": r.path, "methods": list(r.methods)}
+        for r in app.routes
+    ]
