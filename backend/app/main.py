@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 from app.api.chat import router as chat_router
 from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-load_dotenv()
 
 app = FastAPI(title="AskDhawal API")
 

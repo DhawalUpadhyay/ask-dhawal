@@ -1,6 +1,8 @@
 import os
 from openai import OpenAI
 from app.llm.system_prompt import build_system_prompt
+from dotenv import load_dotenv
+load_dotenv()
 
 client = OpenAI()
 
@@ -23,19 +25,19 @@ def generate_llm_reply(message: str, history: list[str] | None = None) -> str:
 
     # Add current user message
     messages.append({"role": "user", "content": message})
-
+    model_name = os.getenv("OPENAI_MODEL", "gpt-5-nano")
     try:
         response = client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
+            model=model_name,
             messages=messages,
-            temperature=0.2,     # factual, not creative
+            temperature=0.2,
             max_tokens=300,
         )
 
         return response.choices[0].message.content.strip()
 
     except Exception as e:
-        print("LLM error:", e)
+        print("LLM error:", e, "\nModel:", model_name)
         return (
             "I’m having trouble answering that right now. "
             "Please try again in a moment."
