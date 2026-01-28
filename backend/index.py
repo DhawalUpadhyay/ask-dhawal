@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.app.api.chat import router as chat_router
+from app.api.chat import router as chat_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="AskDhawal API")

@@ -1,4 +1,4 @@
-from backend.app.data.resume import RESUME_DATA
+from app.data.resume import RESUME_DATA
 
 def generate_reply(message: str) -> str:
     msg = message.lower()

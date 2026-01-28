@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from backend.app.llm.system_prompt import build_system_prompt
+from app.llm.system_prompt import build_system_prompt
 from dotenv import load_dotenv
 load_dotenv()
 
