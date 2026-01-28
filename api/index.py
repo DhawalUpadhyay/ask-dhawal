@@ -1,4 +1,4 @@
-from backend.app.main import app as fastapi_app
+from mangum import Mangum
+from backend.app.main import app
 
-# Expose ASGI app explicitly
-app = fastapi_app
+handler = Mangum(app)

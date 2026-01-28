@@ -3,3 +3,4 @@ fastapi
 openai
 python-dotenv
 uvicorn
+mangum
