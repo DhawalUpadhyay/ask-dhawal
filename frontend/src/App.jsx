@@ -5,6 +5,7 @@ function App() {
   useEffect(() => {
     document.title = "Ask Dhawal – AI Resume";
   }, []);
+  const [showInfo, setShowInfo] = useState(false);
   const endpoint = `${API_BASE_URL}/api/chat`;
   const [messages, setMessages] = useState([
     {
@@ -58,11 +59,23 @@ function App() {
     <div style={styles.page}>
       <div style={styles.card}>
         <div style={styles.header}>
-          <h1 style={styles.title}>Ask Dhawal</h1>
-          <p style={styles.subtitle}>
-            An AI-powered interactive resume. Ask anything about my experience,
-            skills, or projects.
-          </p>
+          <div style={styles.headerRow}>
+            <div>
+              <h1 style={styles.title}>Ask Dhawal</h1>
+              <p style={styles.subtitle}>
+                An AI-powered interactive resume. Ask anything about my experience,
+                skills, or projects.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowInfo(true)}
+              style={styles.infoButton}
+              aria-label="About this chatbot"
+              title="About this chatbot"
+            >
+            How this works ⓘ
+            </button>
+          </div>
         </div>
 
         <div style={styles.chat}>
@@ -111,6 +124,44 @@ function App() {
           </button>
         </div>
       </div>
+      {showInfo && (
+        <div style={styles.modalOverlay} onClick={() => setShowInfo(false)}>
+          <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <h2 style={styles.modalTitle}>About this chatbot</h2>
+
+            <p style={styles.modalText}>
+              This chatbot is an AI-powered interactive resume for Dhawal Upadhyay.
+              It is designed to help recruiters and hiring managers quickly explore
+              his experience, skills, projects, and professional background through
+              natural conversation.
+            </p>
+
+            <p style={styles.modalText}>
+              At the beginning of the conversation,
+              the assistant may request your name and email address to document 
+              the session for Dhawal’s review. This information is not shared with 
+              the AI model. It is used solely to notify Dhawal that an 
+              interaction has taken place. No chat content is permanently stored, 
+              logged, or retained by this application or by any external service. 
+              Refreshing the page will restart the conversation and clear the current session.
+            </p> 
+            <p style={styles.modalText}>
+              The assistant does not retain or persist your name or email address 
+              when creating a session. After a session is established, only a 
+              limited portion of the recent conversation is temporarily maintained 
+              in memory to provide contextual and coherent responses.
+            </p>
+            <p style={styles.modalText}>
+              This contextual information is cleared when the page is refreshed, 
+              and no chat history is stored beyond the active session.
+            </p>
+
+            <button style={styles.closeButton} onClick={() => setShowInfo(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -217,4 +268,63 @@ const styles = {
     color: "#fff",
     fontSize: "14px",
   },
+  headerRow: {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  gap: "16px",
+},
+
+  infoButton: {
+    background: "transparent",
+    border: "none",
+    color: "#9ca3af",
+    fontSize: "20px",
+    cursor: "pointer",
+    padding: "4px",
+  },
+
+  modalOverlay: {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.6)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1000,
+  },
+
+  modal: {
+    background: "#111",
+    borderRadius: "14px",
+    padding: "24px",
+    maxWidth: "520px",
+    width: "100%",
+    boxShadow: "0 30px 60px rgba(0,0,0,0.7)",
+  },
+
+  modalTitle: {
+    marginTop: 0,
+    marginBottom: "12px",
+    fontSize: "20px",
+  },
+
+  modalText: {
+    fontSize: "14px",
+    color: "#d1d5db",
+    lineHeight: 1.6,
+    marginBottom: "12px",
+  },
+
+  closeButton: {
+    marginTop: "16px",
+    padding: "10px 16px",
+    borderRadius: "8px",
+    border: "none",
+    background: "#4f46e5",
+    color: "#fff",
+    cursor: "pointer",
+  },
+
 };
+
