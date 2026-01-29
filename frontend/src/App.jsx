@@ -10,7 +10,7 @@ function App() {
     {
       role: "bot",
       content:
-        "Hi 👋 I’m Dhawal’s AI resume. You can ask me about my experience, skills, or projects.",
+        "Hi 👋 I’m Dhawal’s AI resume. You can ask me about my experience, skills, or projects. To help personalize and document this interaction, please share your name and email.",
     },
   ]);
   const [input, setInput] = useState("");
