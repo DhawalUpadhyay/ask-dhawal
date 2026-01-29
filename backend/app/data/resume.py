@@ -16,7 +16,7 @@ RESUME_DATA = {
 
     "skills": {
         "backend": ["Python", "GenAI", "FastAPI", "REST APIs"],
-        "frontend": ["React", "HTML", "CSS"],
+        "frontend": ["React"],
         "databases": ["PostgreSQL", "SQLite", "DynamoDB"],
         "cloud": ["AWS"],
     },
@@ -31,7 +31,7 @@ RESUME_DATA = {
     Later, I worked on backend systems using FastAPI framework for building REST APIs.
     I have also worked on Fastapi applications involving Generative AI models, LLMs and RAG systems.
     """,
-    "FastAPI Experience": """
+    "FastAPI and REST API Experience": """
     I have been working with FastAPI for last 2 years. I have built backend systems
     from scratch using REST APIs under FastAPI framework.
     """,

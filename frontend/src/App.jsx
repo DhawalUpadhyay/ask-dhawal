@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { API_BASE_URL } from "./config/api";
 
 function App() {
+  useEffect(() => {
+    document.title = "Ask Dhawal – AI Resume";
+  }, []);
   const endpoint = `${API_BASE_URL}/api/chat`;
   const [messages, setMessages] = useState([
     {
