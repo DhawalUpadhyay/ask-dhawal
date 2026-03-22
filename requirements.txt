@@ -3,3 +3,5 @@ openai
 python-dotenv
 uvicorn
 requests
+slowapi
+psycopg2-binary
