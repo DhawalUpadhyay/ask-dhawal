@@ -1,20 +1,24 @@
 RESUME_DATA = {
     "name": "Dhawal Upadhyay",
+    "current_company": "Freechargebiz",
+    "current_role": "Senior Data Scientist",
+    "current_company_joining_date": "February 2026",
+    "availability": "Currently employed and not immediately available. Open to conversations for the right opportunity.",
     "previous_company": "GlobalLogic",
     "last_working_day_previous_company": "25th July 2025",
-    "reason_for_leaving": (
+    "reason_for_leaving_globallogic": (
         "Personal reason — taking care of my mother as she was unwell. "
-        "Things are better now and I am actively looking for opportunities."
+        "Things are better now and I have since joined Freechargebiz as a Senior Data Scientist."
     ),
-    "immediate_joiner": True,
+    "immediate_joiner": False,
     "title_in_previous_organization": "Senior Software Engineer",
     "total_experience_years": 6,
     "summary": (
-        "Senior Software Engineer with strong experience in backend systems, "
-        "API design, and scalable services. Last worked at GlobalLogic. "
-        "Growing focus on Generative AI, including hands-on experience "
-        "with LLM-based systems, Retrieval-Augmented Generation (RAG), and "
-        "agentic AI workflows."
+        "Senior Data Scientist currently working at Freechargebiz (joined Feb 2026). "
+        "6 years of experience spanning backend systems, API design, AWS, and scalable services. "
+        "Previously Senior Software Engineer at GlobalLogic. "
+        "Strong and growing focus on Generative AI, including hands-on experience "
+        "with LLM-based systems, Retrieval-Augmented Generation (RAG), and agentic AI workflows."
     ),
     "skills": {
         "backend": ["Python", "GenAI", "FastAPI", "REST APIs"],
@@ -47,6 +51,13 @@ RESUME_DATA = {
         "AI Interactive Resume chatbot, and an Agentic AI chatbot."
     ),
     "experience": [
+        {
+            "company": "Freechargebiz",
+            "role": "Senior Data Scientist",
+            "description": "Currently working here.",
+            "start_date": "Feb 2026",
+            "end_date": "Present",
+        },
         {
             "company": "GlobalLogic",
             "role": "Senior Software Engineer",
