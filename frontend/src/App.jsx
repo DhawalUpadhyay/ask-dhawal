@@ -7,7 +7,7 @@ import OtpVerify from "./OtpVerify";
 const SUGGESTIONS = [
   "What's your AWS experience?",
   "Tell me about your GenAI work",
-  "Can you join immediately?",
+  "What are you working on now?",
 ];
 
 function App() {
