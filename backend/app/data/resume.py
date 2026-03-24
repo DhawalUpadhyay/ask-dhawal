@@ -4,6 +4,14 @@ RESUME_DATA = {
     "current_role": "Senior Data Scientist",
     "current_company_joining_date": "February 2026",
     "availability": "Currently employed and not immediately available. Open to conversations for the right opportunity.",
+    "current_location": "Noida, Uttar Pradesh, India",
+    "work_mode_preference": {
+        "open_to_onsite": True,
+        "open_to_hybrid": True,
+        "open_to_remote": True,
+        "note": "Open to onsite, hybrid, or remote — flexible depending on the role and location.",
+    },
+    "preferred_locations": ["Noida", "Delhi NCR", "Bengaluru", "Remote"],
     "previous_company": "GlobalLogic",
     "last_working_day_previous_company": "25th July 2025",
     "reason_for_leaving_globallogic": (
