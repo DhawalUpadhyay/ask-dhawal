@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { API_BASE_URL } from "./config/api";
 import "./App.css";
+import Login from "./Login";
+import OtpVerify from "./OtpVerify";
 
 const SUGGESTIONS = [
   "What's your AWS experience?",
@@ -13,6 +15,26 @@ function App() {
     document.title = "Ask Dhawal – AI Resume";
   }, []);
 
+  // --- Auth state machine ---
+  const [screen, setScreen] = useState("login"); // "login" | "otp" | "chat"
+  const [pendingAuth, setPendingAuth] = useState(null); // { sessionId, name, email }
+
+  const handleLoginSuccess = (auth) => {
+    setPendingAuth(auth);
+    setScreen("otp");
+  };
+
+  const handleOtpSuccess = () => {
+    setSessionId(pendingAuth.sessionId);
+    setScreen("chat");
+  };
+
+  const handleBack = () => {
+    setPendingAuth(null);
+    setScreen("login");
+  };
+
+  // --- Chat state ---
   const [showInfo, setShowInfo] = useState(false);
   const endpoint = `${API_BASE_URL}/api/chat`;
 
@@ -20,7 +42,7 @@ function App() {
     {
       role: "bot",
       content:
-        "Hi 👋 I'm Dhawal's AI resume. You can ask me about my experience, skills, or projects. To get started, please share your name and email.",
+        "Hi 👋 I'm Dhawal's AI resume. Ask me anything about my experience, skills, or projects.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -114,6 +136,21 @@ function App() {
   };
 
   const showSuggestions = messages.length === 1 && !loading;
+
+  if (screen === "login") {
+    return <Login onSuccess={handleLoginSuccess} />;
+  }
+
+  if (screen === "otp") {
+    return (
+      <OtpVerify
+        sessionId={pendingAuth.sessionId}
+        email={pendingAuth.email}
+        onSuccess={handleOtpSuccess}
+        onBack={handleBack}
+      />
+    );
+  }
 
   return (
     <div style={styles.page}>
