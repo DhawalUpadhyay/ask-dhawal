@@ -62,7 +62,10 @@ def _async(fn, *args) -> None:
 
 
 def send_otp_email(to_email: str, name: str, otp: str) -> None:
-    print(f"[notify] Queuing OTP email to {to_email}")
+    # Synchronous — must complete before the HTTP response returns.
+    # On serverless (Vercel), daemon threads are killed when the function returns,
+    # so the OTP would never be delivered if sent in a background thread.
+    print(f"[notify] Sending OTP email to {to_email}")
     subject = "Your verification code — Ask Dhawal"
     body = f"""Hi {name or 'there'},
 
@@ -74,7 +77,7 @@ This code expires in 10 minutes.
 
 — Ask Dhawal
 """
-    _async(_send_email, to_email, subject, body)
+    _send_email(to_email, subject, body)
 
 
 def send_alert_email(name: str, email: str) -> None:
